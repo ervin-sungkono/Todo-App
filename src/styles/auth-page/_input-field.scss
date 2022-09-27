@@ -1,0 +1,39 @@
+.input-field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    label{
+        color: var(--black);
+        font-weight: $semi-bold;
+    }
+    .input-wrapper{
+        display: flex;
+        align-items: center;
+        border: 1px solid rgba($black, 0.3);
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        input{
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            color: var(--black);
+            font-size: 18px;
+            background: none;
+            border: none;
+            outline: none;
+        }
+        .icon-wrapper{
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            height: 100%;
+            padding-inline: 1rem;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            svg > path{
+                fill: var(--black);
+            }
+        }
+    }
+}

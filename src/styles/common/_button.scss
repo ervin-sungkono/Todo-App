@@ -1,0 +1,34 @@
+.primary-btn{
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--purple);
+    border-radius: 999px;
+    position: relative;
+    p{
+        font-size: 18px;
+        font-weight: $semi-bold;
+        color: $white;
+        text-align: center;
+        z-index: 1;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 24px;
+        left: 50%;
+        width: 60%;
+        height: 100%;
+        transform: translateX(-50%);
+        background: var(--purple);
+        opacity: 0;
+        border-radius: 999px;
+        filter: blur(32px);
+        transition: 0.35s opacity ease-in-out;
+        z-index: -1;
+    }
+    &:hover{
+        &::before{
+            opacity: 0.3;
+        }
+    }
+}

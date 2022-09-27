@@ -1,0 +1,41 @@
+.btn-wrapper{
+    width: clamp(280px, 33vw, 402px);
+    display: flex;
+    position: fixed;
+    bottom: 8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: $white;
+    box-shadow: var(--shadow2);
+    overflow: hidden;
+    .switch-btn{
+        cursor: pointer;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-size: 18px;
+        font-weight: $semi-bold;
+        text-align: center;
+        z-index: 1;
+        transition: 0.35s color ease-in-out;
+        &.active{
+            color: $white;
+        }
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: var(--purple);
+        transition: 0.5s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);  
+    }
+    &.login::before{
+        transform: translateX(0);
+    }
+    &.register::before{
+        transform: translateX(100%);
+    }
+}

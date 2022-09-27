@@ -1,0 +1,30 @@
+#navbar{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    .container{
+        display: flex;
+        justify-content: space-between;
+        padding-block: 1.5rem;
+        background: var(--white);
+        box-shadow: var(--shadow1);
+        .nav-menu{
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            .nav-links{
+                display: flex;
+                gap: 2rem;
+                a{
+                    font-size: 18px;
+                    font-weight: $semi-bold;
+                    color: var(--black);
+                    &.active{
+                        color: var(--purple);
+                    }
+                }
+            }
+        }
+    }
+}
