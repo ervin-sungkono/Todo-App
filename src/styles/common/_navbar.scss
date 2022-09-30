@@ -6,6 +6,7 @@
     .container{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding-block: 1.5rem;
         background: var(--white);
         box-shadow: var(--shadow1);
@@ -15,6 +16,7 @@
             gap: 4rem;
             .nav-links{
                 display: flex;
+                align-items: center;
                 gap: 2rem;
                 a{
                     font-size: 18px;

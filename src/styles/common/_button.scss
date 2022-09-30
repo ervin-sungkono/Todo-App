@@ -4,17 +4,17 @@
     background-color: var(--purple);
     border-radius: 999px;
     position: relative;
+    z-index: 1;
     p{
         font-size: 18px;
         font-weight: $semi-bold;
         color: $white;
         text-align: center;
-        z-index: 1;
     }
     &::before{
         content: '';
         position: absolute;
-        top: 24px;
+        top: 12px;
         left: 50%;
         width: 60%;
         height: 100%;

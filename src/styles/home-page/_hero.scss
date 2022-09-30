@@ -1,0 +1,42 @@
+#home-page{
+    min-height: 80vh;
+}
+
+.hero-section{
+    padding-block: 4rem;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    .hero-title{
+        max-width: 822px;
+        line-height: 125%;
+        font-size: 3.5rem;
+        text-align: center;
+        color: var(--black);
+        span{
+            color: var(--purple);
+        }
+    }
+    .search-box{
+        display: flex;
+        width: 100%;
+        max-width: 612px;
+        border-radius: 8px;
+        box-shadow: var(--shadow2);
+        overflow: hidden;
+        input{
+            flex-grow: 1;
+            padding: 1rem 1.5rem;
+            font-size: 18px;
+            background: none;
+            border: none;
+            outline: none;
+        }
+        .search-btn{
+            padding: 1rem;
+            border-radius: 0px;
+        }
+    }
+}

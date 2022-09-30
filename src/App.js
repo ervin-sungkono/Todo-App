@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CalendarPage from './pages/CalendarPage';
 import AuthPage from './pages/AuthPage';
+import TodoPage from './pages/TodoPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import Navbar from './components/common/Navbar';
@@ -34,10 +35,15 @@ function App() {
     return token;
   }
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+  }
+
   const [token, setToken] = useState(getToken());
   const [showNav, setNav] = useState(true);
   const [showLinks, setLinks] = useState(true);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(null);
 
   const baseURL = "https://todo-app-be-09.herokuapp.com";
   const fetchTodo = () => {
@@ -50,16 +56,82 @@ function App() {
   useEffect(() =>{
     fetchTodo();
   },[token]);
+  const findTodo = (id) => {
+    const todo = fetch(`${baseURL}/todo/${id}?token=${token}`)
+      .then(res => res.json())
+      .catch(err => console.log(err));
+    return todo;
+  }
+  const createTodo = async() => {
+    const title = document.getElementById('title').value;
+    const due_date = document.getElementById('due-date').value;
+    if(!title || !due_date){
+      alert('Please fill in all the fields');
+      return;
+    }
+    const result = await fetch(`${baseURL}/todo/?token=${token}`,{
+      method:'POST',
+      body: JSON.stringify({
+        title: title,
+        due_date: due_date
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
+    if(result){
+      alert(result.message);
+      fetchTodo();
+    }
+  }
+  const updateTodo = async(id, title, due_date, completed) => {
+    console.log('update', id, title, due_date, completed)
+    if(!title || !due_date){
+      alert('Please fill in all the fields');
+      return;
+    }
+    const result = await fetch(`${baseURL}/todo/${id}?token=${token}`,{
+      method:'PATCH',
+      body: JSON.stringify({
+        title: title,
+        due_date: due_date,
+        completed: completed
+      }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
+    if(result){
+      fetchTodo();
+    }
+  }
+  const deleteTodo = async(id) => {
+    const result = await fetch(`${baseURL}/todo/${id}?token=${token}`,{
+      method:'DELETE'
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
+    if(result){
+      alert(result.message);
+      fetchTodo();
+    }
+  }
 
   return (
     <BrowserRouter>
-      {showNav ? <Navbar showLinks={showLinks}/> : ""}
+      {showNav ? <Navbar showLinks={showLinks} logout={logout}/> : ""}
       {!token ? 
       <AuthPage createToken={createToken} setLinks={setLinks} baseURL={baseURL}/>
       :
       <Routes>
-        <Route exact path = '/' element={<HomePage todos={todos}/>}/>
+        <Route exact path = '/' element={<HomePage todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo}/>}/>
         <Route exact path = '/calendar' element={<CalendarPage todos={todos}/>}/>
+        <Route exact path = '/create' element={<TodoPage submitFunc={createTodo} type={'create'}/>} />
+        <Route exact path = '/update/:id' element={<TodoPage submitFunc={updateTodo} findTodo={findTodo} type={'update'}/>}/>
         <Route exact path = '/404' element={<NotFoundPage setNav={setNav}/>}/>
         <Route path = '*' element={<Navigate replace to="/404"/>}/>
       </Routes>

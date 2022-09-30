@@ -3,8 +3,9 @@ import { useEffect } from "react";
 
 import { NavLink } from 'react-router-dom';
 import NavLogo from '../../assets/nav-logo.png'
+import Button from "./Button";
 
-const Navbar = ({showLinks}) => {
+const Navbar = ({showLinks, logout}) => {
 
     const toggleDarkMode = (e) => {
         e.target.classList.add('active');
@@ -23,7 +24,9 @@ const Navbar = ({showLinks}) => {
                     {showLinks ? 
                     <div className="nav-links">
                         <NavLink exact to="/" end>Home</NavLink>
+                        <NavLink exact to="/create">Add Todo</NavLink>
                         <NavLink exact to="/calendar">Calendar</NavLink>
+                        <Button type={'primary-btn'} className={'logout-btn'} text={'Logout'} clickFunc={logout}/>
                     </div>
                     :
                     ""}

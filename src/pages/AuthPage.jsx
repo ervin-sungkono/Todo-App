@@ -58,7 +58,7 @@ const AuthPage = ({createToken, setLinks, baseURL}) => {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
         const errorMessage = validateForm(username, email, password, confirmPassword);
-        if(errorMessage){
+        if(errorMessage.length > 0){
             alert(errorMessage.join('\n'));
             return;
         }
@@ -79,7 +79,12 @@ const AuthPage = ({createToken, setLinks, baseURL}) => {
             else throw new Error(res.status);
         })
         .catch(err => console.log(err))
-        alert(user ? 'Register Successful' : 'Register Failed');
+        if(user){
+            alert('Register Successful');
+        }else{
+            alert('Register Failed');
+        }
+        
     }
     const getState = () => {
         switch(authState){

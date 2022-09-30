@@ -1,0 +1,32 @@
+.loader-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    grid-column-end: span 4;
+    .loader{
+        display: flex;
+        gap: 1rem;
+        .dot{
+            width: 24px;
+            height: 24px;
+            background: var(--purple);
+            border-radius: 99px;
+            animation: floating 3s ease-in-out infinite; 
+        }
+        @for $i from 1 to 4{
+            .dot:nth-child(#{$i + 1}){
+                animation-delay: $i * 0.35s;
+            }
+        }
+    }
+    h2{
+        color: var(--purple);
+    }
+}
+
+@keyframes floating{
+    50%{
+        transform: translateY(24px);
+    }
+}

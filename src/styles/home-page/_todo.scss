@@ -1,0 +1,66 @@
+.todo-wrapper{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 2rem 1rem;
+    .todo-card{
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border-radius: 8px;
+        color: var(--black);
+        background: var(--white);
+        box-shadow: var(--shadow1);
+        .todo-content{
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            position: relative;
+            .todo-details{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                .todo-title{
+                    font-size: 1.5rem;
+                    font-weight: $semi-bold;
+                    &.strike-through{
+                        text-decoration: line-through;
+                        opacity: 0.8;
+                    }
+                }
+            }
+            .custom-checkbox{
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+                border: 1.5px solid rgba($black, 0.3);
+                border-radius: 4px;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover{
+                    background: rgba($black, 0.10);
+                }
+                &.active{
+                    background: var(--purple);
+                }
+            }
+        }
+        .todo-btn-wrapper{
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            div{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .todo-wrapper{
+        grid-template-columns: repeat(4,1fr);
+    }
+}

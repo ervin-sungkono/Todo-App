@@ -8,8 +8,21 @@ body{
     background: var(--white);
 }
 
+h1,h2,h3,h4,p,div{
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 a{
     text-decoration: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    box-shadow: 0 0 0 30px var(--white) inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
 .container{

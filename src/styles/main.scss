@@ -4,8 +4,14 @@
 
 @import "./common/navbar";
 @import "./common/button";
+@import "./common/loader";
+@import "./common/form";
 
 @import "./auth-page/auth";
-@import "./auth-page/form";
 @import "./auth-page/input-field";
 @import "./auth-page/switch-button";
+
+@import "./home-page/hero";
+@import "./home-page/todo";
+
+@import "./todo-page/form";
