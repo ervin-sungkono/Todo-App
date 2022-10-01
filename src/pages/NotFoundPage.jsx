@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 
-const NotFoundPage = ({setNav}) => {
-    useEffect(() => setNav(false))
+const NotFoundPage = ({setNav, setFooter}) => {
+    useEffect(() => {
+        setNav(false);
+        setFooter(false);
+    })
     return(
         <section id="error-page">
             404

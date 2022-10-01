@@ -1,0 +1,122 @@
+#calendar-page{
+    .container{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+        padding-block: 3rem;
+        gap: 2rem;
+        color: var(--black);
+        .calendar-pagination{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .calendar-title{
+                width: 280px;
+                font-size: 2rem;
+                font-weight: $bold;
+                text-align: center;
+            }
+            .arrow-btn{
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                svg path{
+                    transition: 0.35s stroke ease-in-out;
+                }
+                &:hover{
+                    svg path{
+                        stroke: var(--purple);
+                    }
+                }
+            }
+            .prev-btn{
+                transform: rotate(180deg);
+            }
+        }
+        .calendar-wrapper{
+            display: grid;
+            grid-template-columns: repeat(7,100px);
+            grid-gap: 0.5rem;
+            > *{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .weekdays{
+                align-self: flex-end;
+                margin-bottom: 1rem;
+                font-size: 18px;
+                font-weight: $semi-bold;
+            }
+            .calendar{
+                height: 100px;
+                cursor: pointer;
+                background-color: var(--white);
+                color: $black;
+                border: 1.5px solid rgba($black, 0.3);
+                border-radius: 8px;
+                font-size: 1.5rem;
+                font-weight: $semi-bold;
+                position: relative;
+                transition: 0.35s border ease-in-out, 0.35s background ease-in-out, 0.35s color ease-in-out;
+                .dot{
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    width: 10px;
+                    height: 10px;
+                    background-color: var(--red);
+                    border-radius: 99px;
+                }
+                &:hover{
+                    border: 1.5px solid var(--purple);
+                }
+                &.active{
+                    background-color: var(--purple);
+                    color: $white;
+                    .dot{
+                        background-color: $white;
+                    }
+                }
+                &.disabled{
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+            }
+        }
+        .task-wrapper{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            .task-header{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                .task-title{
+                    font-size: 1.5rem;
+                    font-weight: $semi-bold;
+                }
+                .date{
+                    opacity: 0.8;
+                }
+            }
+            .task-content{
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                li{
+                    font-size: 18px;
+                    font-weight: $semi-bold;
+                    &.strike-through{
+                        text-decoration: line-through;
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+}

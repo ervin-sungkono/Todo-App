@@ -8,6 +8,7 @@ import TodoPage from './pages/TodoPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
 
 import './styles/main.scss';
 
@@ -42,6 +43,7 @@ function App() {
 
   const [token, setToken] = useState(getToken());
   const [showNav, setNav] = useState(true);
+  const [showFooter, setFooter] = useState(true);
   const [showLinks, setLinks] = useState(true);
   const [todos, setTodos] = useState(null);
 
@@ -87,7 +89,6 @@ function App() {
     }
   }
   const updateTodo = async(id, title, due_date, completed) => {
-    console.log('update', id, title, due_date, completed)
     if(!title || !due_date){
       alert('Please fill in all the fields');
       return;
@@ -132,10 +133,11 @@ function App() {
         <Route exact path = '/calendar' element={<CalendarPage todos={todos}/>}/>
         <Route exact path = '/create' element={<TodoPage submitFunc={createTodo} type={'create'}/>} />
         <Route exact path = '/update/:id' element={<TodoPage submitFunc={updateTodo} findTodo={findTodo} type={'update'}/>}/>
-        <Route exact path = '/404' element={<NotFoundPage setNav={setNav}/>}/>
+        <Route exact path = '/404' element={<NotFoundPage setNav={setNav} setFooter={setFooter}/>}/>
         <Route path = '*' element={<Navigate replace to="/404"/>}/>
       </Routes>
       }
+      {showFooter ? <Footer/> : ""}
     </BrowserRouter>
   );
 }
