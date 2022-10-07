@@ -1,17 +1,18 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { NavLink } from 'react-router-dom';
-import NavLogo from '../../assets/nav-logo.png'
+import NavLogo from '../../assets/nav-logo.png';
 import Button from "./Button";
 
 const Navbar = ({showLinks, logout}) => {
 
     const toggleDarkMode = (e) => {
-        e.target.classList.add('active');
+        e.target.classList.toggle('active');
+        document.querySelector('.nav-logo').classList.toggle('white');
+        document.getElementById('root').classList.toggle('dark-mode');
     }
     useEffect(() => {
-        document.querySelector('.toggle-btn.dark-mode-btn').addEventListener('click', toggleDarkMode);
+        document.querySelector('.toggle-btn-wrapper .dark-mode-btn').addEventListener('click', toggleDarkMode);
     },[])
 
     return(
@@ -30,8 +31,9 @@ const Navbar = ({showLinks, logout}) => {
                     </div>
                     :
                     ""}
-                    <div className="toggle-btn dark-mode-btn">
-
+                    <div className="toggle-btn-wrapper">
+                        <p>Theme</p>
+                        <div className="dark-mode-btn"></div>
                     </div>
                 </div>
             </div>

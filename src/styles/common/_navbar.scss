@@ -10,10 +10,15 @@
         padding-block: 1.5rem;
         background: var(--white);
         box-shadow: var(--shadow1);
+        .nav-logo{
+            &.white{
+                filter: brightness(0) invert(1);
+            }
+        }
         .nav-menu{
             display: flex;
             align-items: center;
-            gap: 4rem;
+            gap: 3rem;
             .nav-links{
                 display: flex;
                 align-items: center;
@@ -26,6 +31,12 @@
                         color: var(--purple);
                     }
                 }
+            }
+            .toggle-btn-wrapper{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                color: var(--black);
             }
         }
     }

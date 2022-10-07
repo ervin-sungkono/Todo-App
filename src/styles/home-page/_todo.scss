@@ -34,14 +34,14 @@
                 cursor: pointer;
                 width: 24px;
                 height: 24px;
-                border: 1.5px solid rgba($black, 0.3);
+                border: 1.5px solid var(--black30);
                 border-radius: 4px;
                 z-index: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 &:hover{
-                    background: rgba($black, 0.10);
+                    background: rgba($black, 0.1);
                 }
                 &.active{
                     background: var(--purple);
@@ -54,6 +54,9 @@
             gap: 1rem;
             div{
                 cursor: pointer;
+            }
+            .edit-btn svg path{
+                stroke: var(--black);
             }
         }
     }

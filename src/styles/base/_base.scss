@@ -4,8 +4,12 @@
     box-sizing: border-box;
 }
 
-body{
-    background: var(--white);
+#root{
+    background: $white;
+}
+
+#root.dark-mode{
+    background: $black;
 }
 
 h1,h2,h3,h4,p,div{
@@ -27,4 +31,22 @@ input:-webkit-autofill:active{
 
 .container{
     padding: 0 6.25rem;
+}
+
+@media only screen and (max-width: 1024px){
+    .container{
+        padding: 0 4rem;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 0 3rem;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .container{
+        padding: 0 1.5rem;
+    }
 }

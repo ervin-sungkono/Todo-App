@@ -32,3 +32,30 @@
         }
     }
 }
+
+.dark-mode-btn{
+    cursor: pointer;
+    width: 64px;
+    height: 32px;
+    padding: 4px 8px;
+    background: $white;
+    box-shadow: var(--shadow1);
+    border-radius: 99px;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: var(--purple);
+        border-radius: 99px;
+        transform: translateX(0);
+        transition: 0.35s transform ease-in-out;
+    }
+    &.active{
+        background: #2b2b2b;
+        &::after{
+            transform: translateX(100%);
+        }
+    }
+}
