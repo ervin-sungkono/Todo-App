@@ -134,7 +134,7 @@ function App() {
         <Route exact path = '/create' element={<TodoPage submitFunc={createTodo} type={'create'}/>} />
         <Route exact path = '/update/:id' element={<TodoPage submitFunc={updateTodo} findTodo={findTodo} type={'update'}/>}/>
         <Route exact path = '/404' element={<NotFoundPage setNav={setNav} setFooter={setFooter}/>}/>
-        <Route path = '*' element={<Navigate replace to="/404"/>}/>
+        <Route path = '*' element={<Navigate replace exact to="/404"/>}/>
       </Routes>
       }
       {showFooter ? <Footer/> : ""}
