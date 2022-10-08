@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import CalendarPage from './pages/CalendarPage';
@@ -123,7 +123,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {showNav ? <Navbar showLinks={showLinks} logout={logout}/> : ""}
       {!token ? 
       <AuthPage createToken={createToken} setLinks={setLinks} baseURL={baseURL}/>
@@ -134,11 +134,11 @@ function App() {
         <Route exact path = '/create' element={<TodoPage submitFunc={createTodo} type={'create'}/>} />
         <Route exact path = '/update/:id' element={<TodoPage submitFunc={updateTodo} findTodo={findTodo} type={'update'}/>}/>
         <Route exact path = '/404' element={<NotFoundPage setNav={setNav} setFooter={setFooter}/>}/>
-        <Route path = '*' element={<Navigate replace exact to="/404"/>}/>
+        <Route path = '*' element={<Navigate replace to="/404"/>}/>
       </Routes>
       }
       {showFooter ? <Footer/> : ""}
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
