@@ -8,7 +8,7 @@ const HomePage = ({todos, updateTodo, deleteTodo}) => {
     let timeout;
     const filterTodos = (input) => {
         clearTimeout(timeout);
-        timeout = setTimeout(() => setFilter(input), 250);
+        timeout = setTimeout(() => setFilter(input.toLowerCase()), 250);
     }
     return(
         <section id="home-page">

@@ -1,8 +1,8 @@
 .btn-wrapper{
-    width: clamp(280px, 33vw, 402px);
+    width: clamp(256px, 50vw, 402px);
     display: flex;
     position: absolute;
-    bottom: 8vh;
+    bottom: 6vh;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
@@ -13,7 +13,7 @@
         cursor: pointer;
         width: 100%;
         padding: 0.75rem 1.5rem;
-        font-size: 18px;
+        font-size: var(--body-text);
         font-weight: $semi-bold;
         text-align: center;
         z-index: 1;

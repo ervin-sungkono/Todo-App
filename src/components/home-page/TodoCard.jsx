@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import Icon from "../base/Icon";
 
 const TodoCard = ({todo, updateTodo, deleteTodo}) => {
-    const options = { day:'numeric', month:'short', year:'numeric' };
+    const options = { weekday:'short',day:'numeric', month:'short', year:'numeric' };
     const [isCompleted, setCompleted] = useState(todo.completed);
     const toggleComplete = () => {
         setCompleted(1 - isCompleted);
@@ -25,7 +25,7 @@ const TodoCard = ({todo, updateTodo, deleteTodo}) => {
             <div className="todo-content">
                 <div className="todo-details">
                     <div className={`todo-title ${isCompleted ? "strike-through" : ""}`}>{todo.title}</div>
-                    <div className="todo-duedate">{`Due: ${new Date(todo.due_date).toLocaleDateString('en-GB',options)}`}</div>
+                    <div className="todo-duedate"><span>Due Date: </span>{new Date(todo.due_date).toLocaleDateString('en-GB',options)}</div>
                 </div>
                 <div className={`custom-checkbox ${isCompleted ? "active" : ""}`} onClick={() => toggleComplete()}>
                     {isCompleted ? <Icon type={'check'}/> : ""}

@@ -7,7 +7,7 @@ import CalendarBlock from "../components/calendar-page/CalendarBlock";
 const CalendarPage = ({todos}) =>{
     const weekDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const monthList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const options = { day:'numeric', month:'short', year:'numeric' };
+    const options = { weekday:'short',day:'numeric', month:'short', year:'numeric' };
 
     const date = new Date();
     const [year, setYear] = useState(date.getFullYear());
@@ -59,20 +59,22 @@ const CalendarPage = ({todos}) =>{
                     <div className="calendar-title">{monthList[month]} {year}</div>
                     <div className="arrow-btn next-btn" onClick={() => nextMonth()}><Icon type={'arrow'}/></div>
                 </div>
-                <div className="calendar-wrapper">
-                    {weekDays.map((day) => <div className="weekdays">{day}</div>)}
-                    {showCalendar().map((month, index) => 
-                        month.map((date) => <CalendarBlock isCurrentMonth={(index === 1)} date={date} activeDate={activeDate} setDate={setDate} hasTask={todos ? (todos.filter(todo => todo.due_date.split('T')[0] === date).length > 0) : null}/>
-                        ))}
-                </div>
-                <div className="task-wrapper">
-                    <div className="task-header">
-                        <div className="task-title">Available Tasks</div>
-                        <div className="date">{new Date(activeDate).toLocaleDateString('en-GB', options)}</div>
+                <div className="page-content">
+                    <div className="calendar-wrapper">
+                        {weekDays.map((day) => <div className="weekdays">{day}</div>)}
+                        {showCalendar().map((month, index) => 
+                            month.map((date) => <CalendarBlock isCurrentMonth={(index === 1)} date={date} activeDate={activeDate} setDate={setDate} hasTask={todos ? (todos.filter(todo => todo.due_date.split('T')[0] === date).length > 0) : null}/>
+                            ))}
                     </div>
-                    <ol className="task-content">
-                        {todos ? todos.filter(todo => todo.due_date.split('T')[0] === activeDate).map((todo) => <li className={todo.completed ? "strike-through" : ""}>{todo.title}</li>) : ""}
-                    </ol>
+                    <div className="task-wrapper">
+                        <div className="task-header">
+                            <div className="task-title">Available Tasks</div>
+                            <div className="date">{new Date(activeDate).toLocaleDateString('en-GB', options)}</div>
+                        </div>
+                        <ol className="task-content">
+                            {todos ? todos.filter(todo => todo.due_date.split('T')[0] === activeDate).map((todo) => <li className={todo.completed ? "strike-through" : ""}>{todo.title}</li>) : ""}
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>

@@ -10,14 +10,14 @@
         display: flex;
         align-items: center;
         border-radius: 8px;
-        border: 1px solid rgba($color: $black, $alpha: 0.3);
+        border: 1px solid var(--black30);
         overflow: hidden;
         position: relative;
         input{
             flex-grow: 1;
             padding: 0.75rem 1rem;
             color: var(--black);
-            font-size: 18px;
+            font-size: var(--body-text);
             background: none;
             border: none;
             outline: none;

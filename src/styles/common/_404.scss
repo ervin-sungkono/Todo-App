@@ -1,0 +1,27 @@
+#error-page{
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        min-height: 100vh;
+        color: var(--black);
+        .error-content{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            .title{
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+            .description{
+                font-size: var(--body-text);
+            }
+        }
+        a{
+            width: clamp(256px, 100%, 420px);
+        }
+    }
+}

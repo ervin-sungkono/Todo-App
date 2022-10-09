@@ -1,9 +1,9 @@
 #footer{
     .container{
-        padding-block: 4rem;
+        padding-block: 3rem;
         background: $black;
         color: $white;
-        font-size: 18px;
+        font-size: var(--caption);
         text-align: center;
     }
 }

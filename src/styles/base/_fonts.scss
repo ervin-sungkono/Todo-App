@@ -8,3 +8,43 @@ $regular: 400;
 $medium: 500;
 $semi-bold: 600;
 $bold: 700;
+
+:root{
+    --large-heading: 56px;
+    --medium-heading: 32px;
+    --small-heading: 24px;
+    --body-text: 18px;
+    --caption: 16px;
+}
+
+@media only screen and (max-width: 1280px){
+    :root{
+        --large-heading: 48px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    :root{
+        --large-heading: 40px;
+        --medium-heading: 28px;
+        --small-heading: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    :root{
+        --large-heading: 32px;
+        --medium-heading: 24px;
+        --small-heading: 18px;
+        --body-text: 16px;
+        --caption: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    :root{
+        --large-heading: 28px;
+        --body-text: 14.4px;
+        --caption: 12px;
+    }
+}

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { NavLink } from 'react-router-dom';
 import NavLogo from '../../assets/nav-logo.png';
 import Button from "./Button";
 
 const Navbar = ({showLinks, logout}) => {
+    const [showMobileNav, setMobileNav] = useState(false);
 
     const toggleDarkMode = (e) => {
         e.target.classList.toggle('active');
@@ -21,7 +22,7 @@ const Navbar = ({showLinks, logout}) => {
                 <div className="nav-logo">
                     <img src={NavLogo} alt="Navbar Logo" />
                 </div>
-                <div className="nav-menu">
+                <div className={`nav-menu ${showMobileNav ? "active" : ""}`}>
                     {showLinks ? 
                     <div className="nav-links">
                         <NavLink exact to="/" end>Home</NavLink>
@@ -35,6 +36,11 @@ const Navbar = ({showLinks, logout}) => {
                         <p>Theme</p>
                         <div className="dark-mode-btn"></div>
                     </div>
+                </div>
+                <div id="hamburger-btn" className={showMobileNav ? "active" : ""} onClick={() => setMobileNav(!showMobileNav)}>
+                    <div className="line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
                 </div>
             </div>
         </nav>
