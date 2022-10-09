@@ -5,7 +5,7 @@ Todo App made using React and SASS. This app uses API from my other repository [
 1. Authentication Page
 2. CRUD Todo
 3. View Calendar
-4. Responsive Layout(On Progress)
+4. Responsive Layout
 5. Dark Mode
 
 ## Setup
