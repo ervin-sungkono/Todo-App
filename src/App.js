@@ -47,7 +47,7 @@ function App() {
   const [showLinks, setLinks] = useState(true);
   const [todos, setTodos] = useState(null);
 
-  const baseURL = "https://todo-app-be-09.herokuapp.com";
+  const baseURL = "https://todo-app-api.glitch.me";
   const fetchTodo = () => {
     if(token)
     fetch(`${baseURL}/todo/?token=${token}`)

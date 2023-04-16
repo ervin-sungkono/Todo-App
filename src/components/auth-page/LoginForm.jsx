@@ -9,10 +9,10 @@ const LoginForm = ({userLogin}) => {
         <div id="login-form" className="form">
             <div className="form-field">
                 <InputField
-                    label={'Username'}
-                    id={'username'}
-                    type={'text'}
-                    placeholder={'Enter Username...'}
+                    label={'Email'}
+                    id={'email'}
+                    type={'email'}
+                    placeholder={'Enter Email...'}
                 />
                 <PasswordField
                     label={'Password'}

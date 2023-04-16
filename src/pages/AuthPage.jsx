@@ -7,16 +7,16 @@ import SwitchButton from "../components/auth-page/SwitchButton";
 const AuthPage = ({createToken, setLinks, baseURL}) => {
     const [authState, setState] = useState('login');
     const userLogin = async() => {
-        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        if(!username || !password){
+        if(!email || !password){
             alert('Please fill in all the fields');
             return;
         }
         const user = await fetch(`${baseURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({
-                username: username,
+                email: email,
                 password: password
             }),
             headers: {
@@ -33,7 +33,7 @@ const AuthPage = ({createToken, setLinks, baseURL}) => {
             createToken(user.token);
             setLinks(true);
         }else{
-            alert('Username or password is incorrect, please try again');
+            alert('Email or password is incorrect, please try again');
         }
     }
     const validateForm = (username, email, password, confirmPassword) => {
